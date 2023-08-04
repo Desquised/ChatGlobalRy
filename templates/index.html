@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Ryuten Beta v1.0</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-header">
+            Chat Ryuten Beta v1.0
+        </div>
+        <div id="chat-messages">
+            {% for message in messages %}
+                <div class="message {{ 'self' if message['username'] == 'Guest' else 'other' }}">
+                    <span class="username">{{ message['username'] }}</span>
+                    <span class="content">{{ message['content'] }}</span>
+                </div>
+            {% endfor %}
+        </div>
+        <div id="input-container">
+            <input type="text" id="message-input" placeholder="Type your message">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

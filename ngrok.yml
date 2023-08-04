@@ -1,0 +1,9 @@
+apps:
+  - name: ngrok
+    script: ngrok
+    args: "http 5000"
+    exec_mode: "fork"
+    instances: 1
+    autorestart: true
+    cron_restart: "0 12 * * *"
+    merge_logs: true
